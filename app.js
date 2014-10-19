@@ -16,6 +16,7 @@
   app.use(express["static"](__dirname + '/public_html'));
 
   io.sockets.on('connection', function(socket) {
+    socket.broadcast.emit('clear');
     socket.on('draw', function(data) {
       return socket.broadcast.emit('draw', data);
     });

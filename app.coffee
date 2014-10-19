@@ -8,6 +8,7 @@ app.set 'port', 1488
 app.use express.static __dirname + '/public_html'
 
 io.sockets.on 'connection', (socket) ->
+  socket.broadcast.emit 'clear'
   socket.on 'draw', (data) ->
     socket.broadcast.emit 'draw', data
 
